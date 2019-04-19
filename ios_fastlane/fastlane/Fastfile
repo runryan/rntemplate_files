@@ -1,0 +1,29 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+  desc "内测版本"
+  lane :beta do
+    puts("开始打包ipa文件");
+    increment_build_number(xcodeproj: "./RNWithRedux.xcodeproj")
+    gym;
+    ipa_file_path = lane_context[SharedValues::IPA_OUTPUT_PATH]
+    puts("ipa保存路径：" + ipa_file_path);
+    say("iOS打包完成");
+    notification(title: "iOS打包完成", message: "ipa路径：" + ipa_file_path);
+  end
+end

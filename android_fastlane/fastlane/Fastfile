@@ -1,0 +1,43 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:android)
+
+platform :android do
+  desc "./代表的是android文件夹"
+
+  lane :beta do
+    puts("开始打包Android APK!");
+    increment_version_code(
+      gradle_file_path: "./build.gradle"
+    );
+    gradle(
+      task: 'assemble', 
+      build_type: 'Release',
+       print_command: true,   
+      properties: {
+        "android.injected.signing.store.file" => "./keystores/keystore",
+        "android.injected.signing.store.password" => "12345678",
+        "android.injected.signing.key.alias" => "12345",
+        "android.injected.signing.key.password" => "12345678",
+      },
+    );
+    apk_file_path = lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH];
+    puts("apk保存路径： " + apk_file_path);
+    say("Android打包完成");
+    notification(title: "Android打包完成", message: "apk路径：" + apk_file_path);
+  end
+
+end
