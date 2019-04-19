@@ -14,5 +14,6 @@ rn.gitignore是React Native项目的gitignore文件模板，是[gitignore](https
   },
 ```
 
-需要打包时，在`terminal`中执行`npm run package`即可完成iOS和Android打包工作。
+需要打包时，在`terminal`中跳转到RN项目根目录，执行`npm run package`即可完成iOS和Android打包工作。
+
 
