@@ -1,4 +1,4 @@
-# rntemplate_files使用说明
+# 使用说明
 
 ### rn.gitignore文件
 rn.gitignore是React Native项目的gitignore文件模板，是[gitignore](https://github.com/github/gitignore)项目中的[Objective-C.gitignore](https://github.com/github/gitignore/blob/master/Objective-C.gitignore)、[Swift.gitignore](https://github.com/github/gitignore/blob/master/Swift.gitignore)、[Android.gitignore](https://github.com/github/gitignore/blob/master/Android.gitignore)合并而成的。
