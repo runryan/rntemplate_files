@@ -27,11 +27,12 @@ platform :android do
       task: 'assemble', 
       build_type: 'Release',
        print_command: true,   
+      配置keystore信息
       properties: {
-        "android.injected.signing.store.file" => "./keystores/keystore",
-        "android.injected.signing.store.password" => "12345678",
-        "android.injected.signing.key.alias" => "12345",
-        "android.injected.signing.key.password" => "12345678",
+        "android.injected.signing.store.file" => "配置Keystore路径",
+        "android.injected.signing.store.password" => "输入密码",
+        "android.injected.signing.key.alias" => "输入密码",
+        "android.injected.signing.key.password" => "输入密码",
       },
     );
     apk_file_path = lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH];
